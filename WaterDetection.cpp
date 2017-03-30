@@ -240,7 +240,8 @@ int main( int argc, char** argv )
     
     
    cvtColor(image, hsv, COLOR_BGR2HSV);
-for( int y = 0; y < image.rows; y++ ) {
+   //saturation of image	
+   for( int y = 0; y < image.rows; y++ ) {
         for( int x = 0; x < image.cols; x++ ) {
             for( int c = 0; c < 3; c++ ) {
                 new_image.at<Vec3b>(y,x)[c] =
@@ -248,16 +249,23 @@ for( int y = 0; y < image.rows; y++ ) {
             }
         }
     }
-    
+	Mat brightimage;
+    new_image.convertTo(brightimage, -1, 1, 25);
+    int threshold_value = 0;
+    int threshold_type = 3;
+    int const max_value = 225;
+    int const max_BINARY_value = 225;
+	//intensity threshold to ignore low intensity value
+	threshold( src_gray, dst, threshold_value, max_BINARY_value,threshold_type );
   int numOfSegments = 0; 
     
-    Mat segments = watershedSegment(new_image,numOfSegments);
+    Mat segments = watershedSegment(dst,numOfSegments);
     
-    mergeSegments(image,segments, numOfSegments);
+    mergeSegments(dst,segments, numOfSegments);
     
     Mat wshed = createSegmentationDisplay(segments,numOfSegments);
      
-    Mat wshedWithImage = createSegmentationDisplay(segments,numOfSegments,image);
+    Mat wshedWithImage = createSegmentationDisplay(segments,numOfSegments,brightimage);
 
    
     imshow("Merged segments",wshed);
