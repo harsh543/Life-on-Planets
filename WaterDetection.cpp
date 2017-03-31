@@ -250,6 +250,7 @@ int main( int argc, char** argv )
         }
     }
 	Mat brightimage;
+	//improving brightness of image
     new_image.convertTo(brightimage, -1, 1, 25);
     int threshold_value = 0;
     int threshold_type = 3;
@@ -258,14 +259,14 @@ int main( int argc, char** argv )
 	//intensity threshold to ignore low intensity value
 	threshold( src_gray, dst, threshold_value, max_BINARY_value,threshold_type );
   int numOfSegments = 0; 
-    
+    //water body segmentation
     Mat segments = watershedSegment(dst,numOfSegments);
     
     mergeSegments(dst,segments, numOfSegments);
-    
+      //creating  markers for water body based on segments
     Mat wshed = createSegmentationDisplay(segments,numOfSegments);
      
-    Mat wshedWithImage = createSegmentationDisplay(segments,numOfSegments,brightimage);
+    Mat wshedWithImage = createSegmentationDisplay(segments,numOfSegments,dst);
 
    
     imshow("Merged segments",wshed);
