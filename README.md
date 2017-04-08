@@ -1,7 +1,7 @@
 # Life-on-Planets
 
 
-Sample output(consolidated):
+Sample output(would look like):
 ![alt tag](https://s8.postimg.org/xz34r5cdx/image.png)
 
 
