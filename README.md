@@ -4,7 +4,7 @@
 Sample output:
 RGB Image<br>
 ![alt tag](https://image.ibb.co/iN1b6Q/image_brown.png)<br>
-HUW Image:<br>
+HUE Image:<br>
 ![alt tag](https://image.ibb.co/h7Pk0k/hueimage.png)<br>
 Saturation:<br>
 ![alt tag](https://image.ibb.co/h7Pk0k/hueimage.png)<br>
